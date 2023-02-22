@@ -35,4 +35,10 @@ public class Mock {
 
         return listSuperHeroesResult;
     }
+
+    static SuperHeroModel createdSuperHero() {
+        Long id = 6L;
+        String name = "createdSuperHeroName";
+        return new SuperHeroModel(id, name);
+    }
 }

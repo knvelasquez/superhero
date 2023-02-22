@@ -11,4 +11,6 @@ public interface SuperHeroApi {
     SuperHeroModel getByUniqueId(long id);
 
     List<SuperHeroModel> getAllByContainingName(String name);
+
+    SuperHeroModel createOrUpdate(SuperHeroModel createdHero);
 }
