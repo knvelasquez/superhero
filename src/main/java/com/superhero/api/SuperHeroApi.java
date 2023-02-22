@@ -9,4 +9,6 @@ public interface SuperHeroApi {
     List<SuperHeroModel> getAll();
 
     SuperHeroModel getByUniqueId(long id);
+
+    List<SuperHeroModel> getAllByContainingName(String name);
 }

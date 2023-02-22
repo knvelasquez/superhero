@@ -1,6 +1,7 @@
 package com.superhero;
 
 import com.superhero.model.SuperHeroModel;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -22,5 +23,16 @@ public class Mock {
         listAllSuperHeroes.add(ironMan);
 
         return listAllSuperHeroes;
+    }
+
+    static List<SuperHeroModel> listSuperHeroesContainManInName() {
+        List<SuperHeroModel> listSuperHeroesResult = new ArrayList<>();
+
+        listSuperHeroesResult.add(superMan);
+        listSuperHeroesResult.add(batMan);
+        listSuperHeroesResult.add(spiderMan);
+        listSuperHeroesResult.add(ironMan);
+
+        return listSuperHeroesResult;
     }
 }

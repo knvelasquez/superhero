@@ -8,6 +8,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.List;
+import java.util.Locale;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
@@ -58,5 +59,20 @@ public class SuperHeroTest {
 
         assertNotNull(superHeroResult3);
         assertEquals("SpiderMan", superHeroResult3.getName());
+    }
+
+    @Test
+    @DisplayName("Get all super heroes information by containing name should return ok result")
+    public void getAllSuperHeroesInformationByContainingNameShouldReturnOkResult() {
+        //Arrange
+        when(superHeroApi.getAllByContainingName("man")).thenReturn(Mock.listSuperHeroesContainManInName());
+
+        //Act
+        List<SuperHeroModel> superHeroesResult = superHeroApi.getAllByContainingName("man");
+
+        //Assert
+        superHeroesResult.forEach(
+                (superHero) -> assertTrue(superHero.getName().toLowerCase().contains("man"))
+        );
     }
 }
