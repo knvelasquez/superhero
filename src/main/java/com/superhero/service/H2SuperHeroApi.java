@@ -33,8 +33,7 @@ public class H2SuperHeroApi implements SuperHeroApi {
 
     @Override
     public List<SuperHeroModel> getAllByContainingName(String name) {
-        // TODO implement getAllByContainingName method
-        return null;
+        return Map.fromEntity(repository.findByNameContainingIgnoreCase(name));
     }
 
     @Override

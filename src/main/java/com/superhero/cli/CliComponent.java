@@ -23,6 +23,7 @@ public class CliComponent {
         createNewSuperHero();
         getAllSuperHeroes();
         getUniqueById();
+        getAllByContainingName();
     }
 
     private void createNewSuperHero() {
@@ -67,5 +68,16 @@ public class CliComponent {
         System.out.println(NotFound);
 
         System.out.println("******************************************** End Get Unique Super Hero by id *********************************************************************");
+    }
+
+    private void getAllByContainingName(){
+        System.out.println("******************************************** Start Get All Super Heroes By Contain Name **********************************************************");
+        final List<SuperHeroModel> listResult = superHeroApi.getAllByContainingName("man");
+        System.out.println(listResult);
+
+        final List<SuperHeroModel> listResult2 = superHeroApi.getAllByContainingName("lk");
+        System.out.println(listResult2);
+
+        System.out.println("******************************************** End Get All Super Heroes By Contain Name ************************************************************");
     }
 }
