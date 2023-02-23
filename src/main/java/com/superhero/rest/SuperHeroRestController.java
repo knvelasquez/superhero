@@ -44,4 +44,9 @@ public class SuperHeroRestController {
     public SuperHeroModel update(@RequestBody SuperHeroModel superHero) {
         return superHeroApi.createOrUpdate(superHero);
     }
+
+    @RequestMapping(value = "superhero/{id}", method = RequestMethod.DELETE)
+    public void delete(@PathVariable Long id) {
+        superHeroApi.delete(id);
+    }
 }
