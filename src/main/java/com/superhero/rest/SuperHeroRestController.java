@@ -35,4 +35,8 @@ public class SuperHeroRestController {
         return superHeroApi.getAllByContainingName(name);
     }
 
+    @RequestMapping(value = "superhero", method = RequestMethod.POST)
+    public SuperHeroModel create(@RequestBody SuperHeroModel superHero) {
+        return superHeroApi.createOrUpdate(superHero);
+    }
 }
