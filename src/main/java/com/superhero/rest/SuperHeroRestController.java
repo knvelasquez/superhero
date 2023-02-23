@@ -3,10 +3,8 @@ package com.superhero.rest;
 import com.superhero.api.SuperHeroApi;
 import com.superhero.model.SuperHeroModel;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.lang.NonNull;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -25,6 +23,11 @@ public class SuperHeroRestController {
     @RequestMapping(value = "superhero", method = RequestMethod.GET)
     public List<SuperHeroModel> getAll() {
         return superHeroApi.getAll();
+    }
+
+    @RequestMapping(value = "superhero/{id}", method = RequestMethod.GET)
+    public SuperHeroModel getByUniqueId(@PathVariable @NonNull Long id) {
+        return superHeroApi.getByUniqueId(id);
     }
 
 }
