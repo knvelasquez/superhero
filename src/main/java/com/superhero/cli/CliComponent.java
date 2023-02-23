@@ -22,6 +22,7 @@ public class CliComponent {
     private void init() {
         createNewSuperHero();
         getAllSuperHeroes();
+        getUniqueById();
     }
 
     private void createNewSuperHero() {
@@ -48,5 +49,23 @@ public class CliComponent {
         System.out.println(listAllSuperHeroes);
 
         System.out.println("******************************************** End Get All Super Heroes ***************************************************************************");
+    }
+
+    private void getUniqueById() {
+        System.out.println("******************************************** Start Get Unique Super Hero by id ******************************************************************");
+
+        final SuperHeroModel hulkResult = superHeroApi.getByUniqueId(1L);
+        System.out.println(hulkResult);
+
+        final SuperHeroModel IronManResult = superHeroApi.getByUniqueId(2L);
+        System.out.println(IronManResult);
+
+        final SuperHeroModel SuperManResult = superHeroApi.getByUniqueId(3L);
+        System.out.println(SuperManResult);
+
+        final SuperHeroModel NotFound = superHeroApi.getByUniqueId(450L);
+        System.out.println(NotFound);
+
+        System.out.println("******************************************** End Get Unique Super Hero by id *********************************************************************");
     }
 }

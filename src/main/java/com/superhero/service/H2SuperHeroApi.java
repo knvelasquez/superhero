@@ -25,7 +25,9 @@ public class H2SuperHeroApi implements SuperHeroApi {
 
     @Override
     public SuperHeroModel getByUniqueId(long id) {
-        // TODO implement getByUniqueId method
+        if (repository.existsById(id)) {
+            return Map.fromEntity(repository.findById(id).get());
+        }
         return null;
     }
 
