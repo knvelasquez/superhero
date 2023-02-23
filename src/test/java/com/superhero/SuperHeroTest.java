@@ -108,4 +108,15 @@ public class SuperHeroTest {
         assertNotEquals(0, superHeroModelResult.getId());
         assertEquals("updatedSuperHeroName", superHeroModelResult.getName());
     }
+
+    @Test
+    @DisplayName("Delete a super hero by provide id should return ok result")
+    public void deleteASuperHeroByProvideIdShouldReturnOkResult() {
+        //Arrange
+        Long idSuperHeroMock = 1L;
+
+        //Act
+        //Assert
+        assertDoesNotThrow(() -> superHeroApi.delete(idSuperHeroMock));
+    }
 }
