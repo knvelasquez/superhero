@@ -41,4 +41,10 @@ public class Mock {
         String name = "createdSuperHeroName";
         return new SuperHeroModel(id, name);
     }
+
+    static SuperHeroModel updatedSuperHero() {
+        Long id = 3L;
+        String name = "updatedSuperHeroName";
+        return new SuperHeroModel(id, name);
+    }
 }

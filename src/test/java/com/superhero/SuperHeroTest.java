@@ -92,4 +92,20 @@ public class SuperHeroTest {
         assertNotEquals(0, superHeroModelResult.getId());
         assertEquals("createdSuperHeroName", superHeroModelResult.getName());
     }
+
+    @Test
+    @DisplayName("Update a super hero by provide information should return ok result")
+    public void updateASuperHeroByProvideInformationShouldReturnOkResult() {
+        //Arrange
+        when(superHeroApi.createOrUpdate(any())).thenReturn(Mock.updatedSuperHero());
+
+        //Act
+        SuperHeroModel updatedSuperHeroModel = new SuperHeroModel(4L, "updatedSuperHeroName");
+        SuperHeroModel superHeroModelResult = superHeroApi.createOrUpdate(updatedSuperHeroModel);
+
+        //Assert
+        assertNotNull(superHeroModelResult);
+        assertNotEquals(0, superHeroModelResult.getId());
+        assertEquals("updatedSuperHeroName", superHeroModelResult.getName());
+    }
 }
