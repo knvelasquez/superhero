@@ -30,4 +30,9 @@ public class SuperHeroRestController {
         return superHeroApi.getByUniqueId(id);
     }
 
+    @RequestMapping(value = "superhero/contain/{name}", method = RequestMethod.GET)
+    public List<SuperHeroModel> getAllByContainingName(@PathVariable @NonNull String name) {
+        return superHeroApi.getAllByContainingName(name);
+    }
+
 }
