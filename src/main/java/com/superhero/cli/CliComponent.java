@@ -24,6 +24,7 @@ public class CliComponent {
         getAllSuperHeroes();
         getUniqueById();
         getAllByContainingName();
+        updateSuperHero();
     }
 
     private void createNewSuperHero() {
@@ -70,7 +71,7 @@ public class CliComponent {
         System.out.println("******************************************** End Get Unique Super Hero by id *********************************************************************");
     }
 
-    private void getAllByContainingName(){
+    private void getAllByContainingName() {
         System.out.println("******************************************** Start Get All Super Heroes By Contain Name **********************************************************");
         final List<SuperHeroModel> listResult = superHeroApi.getAllByContainingName("man");
         System.out.println(listResult);
@@ -79,5 +80,21 @@ public class CliComponent {
         System.out.println(listResult2);
 
         System.out.println("******************************************** End Get All Super Heroes By Contain Name ************************************************************");
+    }
+
+    private void updateSuperHero() {
+        System.out.println("******************************************** Start Update a Super Hero ***************************************************************************");
+
+        final SuperHeroModel hulkResult = superHeroApi.getByUniqueId(1L);
+        final SuperHeroModel updatedHulk = new SuperHeroModel(hulkResult.getId(), "updatedHulkName");
+        final SuperHeroModel updatedHulkResult = superHeroApi.createOrUpdate(updatedHulk);
+        System.out.println(updatedHulkResult);
+
+        final SuperHeroModel ironManResul = superHeroApi.getByUniqueId(2L);
+        final SuperHeroModel updatedIronMan = new SuperHeroModel(ironManResul.getId(), "updatedIronMan2Name");
+        final SuperHeroModel updatedIronManResult = superHeroApi.createOrUpdate(updatedIronMan);
+        System.out.println(updatedIronManResult);
+
+        System.out.println("******************************************** End Update a Super Hero *****************************************************************************");
     }
 }
