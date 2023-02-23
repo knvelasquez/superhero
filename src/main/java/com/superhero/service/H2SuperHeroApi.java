@@ -45,6 +45,8 @@ public class H2SuperHeroApi implements SuperHeroApi {
 
     @Override
     public void delete(Long idSuperHero) {
-        // TODO implement delete method
+        if (repository.existsById(idSuperHero)) {
+            repository.deleteById(idSuperHero);
+        }
     }
 }

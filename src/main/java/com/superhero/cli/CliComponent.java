@@ -25,6 +25,7 @@ public class CliComponent {
         getUniqueById();
         getAllByContainingName();
         updateSuperHero();
+        deleteSuperHero();
     }
 
     private void createNewSuperHero() {
@@ -96,5 +97,17 @@ public class CliComponent {
         System.out.println(updatedIronManResult);
 
         System.out.println("******************************************** End Update a Super Hero *****************************************************************************");
+    }
+
+    private void deleteSuperHero() {
+        System.out.println("******************************************** Start Delete a Super Hero ***************************************************************************");
+
+        superHeroApi.delete(1L);
+        superHeroApi.delete(2L);
+        superHeroApi.delete(3L);
+        superHeroApi.delete(1560L);
+        System.out.println(superHeroApi.getAll());
+
+        System.out.println("******************************************** End Delete a Super Hero *****************************************************************************");
     }
 }
