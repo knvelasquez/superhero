@@ -7,15 +7,15 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
-import java.util.Locale;
-
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-@SpringBootTest
+import java.util.List;
+
+
+@SpringBootTest(classes = com.superhero.SuperHeroTest.class)
 public class SuperHeroTest {
 
     static SuperHeroApi superHeroApi;
@@ -79,7 +79,7 @@ public class SuperHeroTest {
 
     @Test
     @DisplayName("Create a super hero by provide information should return ok result")
-    public void createASuperHeroByProvideInformationShouldReturnOkResult(){
+    public void createASuperHeroByProvideInformationShouldReturnOkResult() {
         //Arrange
         when(superHeroApi.createOrUpdate(any())).thenReturn(Mock.createdSuperHero());
 

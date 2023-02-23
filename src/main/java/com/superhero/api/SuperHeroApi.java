@@ -12,7 +12,7 @@ public interface SuperHeroApi {
 
     List<SuperHeroModel> getAllByContainingName(String name);
 
-    SuperHeroModel createOrUpdate(SuperHeroModel createdHero);
+    SuperHeroModel createOrUpdate(SuperHeroModel superHero);
 
     void delete(Long idSuperHero);
 }

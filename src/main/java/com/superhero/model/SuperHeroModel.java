@@ -20,4 +20,12 @@ public class SuperHeroModel {
     public String getName() {
         return name;
     }
+
+    @Override
+    public String toString() {
+        return "SuperHero{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }
