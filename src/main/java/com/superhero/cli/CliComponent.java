@@ -30,9 +30,9 @@ public class CliComponent {
         final SuperHeroModel IronManModel = new SuperHeroModel("IronMan");
         final SuperHeroModel SuperManModel = new SuperHeroModel("SuperMan");
 
-        SuperHeroModel hulkResult = superHeroApi.createOrUpdate(HulkModel);
-        SuperHeroModel ironManResult = superHeroApi.createOrUpdate(IronManModel);
-        SuperHeroModel superManResult = superHeroApi.createOrUpdate(SuperManModel);
+        final SuperHeroModel hulkResult = superHeroApi.createOrUpdate(HulkModel);
+        final SuperHeroModel ironManResult = superHeroApi.createOrUpdate(IronManModel);
+        final SuperHeroModel superManResult = superHeroApi.createOrUpdate(SuperManModel);
 
         System.out.println(hulkResult.toString());
         System.out.println(ironManResult.toString());
@@ -44,9 +44,9 @@ public class CliComponent {
     private void getAllSuperHeroes() {
         System.out.println("******************************************** Start Get All Super Heroes *************************************************************************");
 
-        List<SuperHeroModel> listAllSuperHeroes = superHeroApi.getAll();
+        final List<SuperHeroModel> listAllSuperHeroes = superHeroApi.getAll();
         System.out.println(listAllSuperHeroes);
 
-        System.out.println("******************************************** End Get All Super Heroes   **************************************************************************");
+        System.out.println("******************************************** End Get All Super Heroes ***************************************************************************");
     }
 }
