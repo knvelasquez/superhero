@@ -7,6 +7,8 @@ import com.superhero.service.H2SuperHeroApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class CliComponent {
     private final SuperHeroApi superHeroApi;
@@ -19,9 +21,10 @@ public class CliComponent {
 
     private void init() {
         createNewSuperHero();
+        getAllSuperHeroes();
     }
 
-    private void createNewSuperHero(){
+    private void createNewSuperHero() {
         System.out.println("******************************************** Start Create a Super Hero ***************************************************************************");
         final SuperHeroModel HulkModel = new SuperHeroModel("Hulk");
         final SuperHeroModel IronManModel = new SuperHeroModel("IronMan");
@@ -36,5 +39,14 @@ public class CliComponent {
         System.out.println(superManResult.toString());
 
         System.out.println("******************************************** End Create a Super Hero ****************************************************************************");
+    }
+
+    private void getAllSuperHeroes() {
+        System.out.println("******************************************** Start Get All Super Heroes *************************************************************************");
+
+        List<SuperHeroModel> listAllSuperHeroes = superHeroApi.getAll();
+        System.out.println(listAllSuperHeroes);
+
+        System.out.println("******************************************** End Get All Super Heroes   **************************************************************************");
     }
 }

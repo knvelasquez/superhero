@@ -20,8 +20,7 @@ public class H2SuperHeroApi implements SuperHeroApi {
 
     @Override
     public List<SuperHeroModel> getAll() {
-        // TODO implement getAll method
-        return null;
+        return Map.fromEntity(repository.findAll());
     }
 
     @Override
