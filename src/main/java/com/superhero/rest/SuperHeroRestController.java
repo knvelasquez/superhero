@@ -39,4 +39,9 @@ public class SuperHeroRestController {
     public SuperHeroModel create(@RequestBody SuperHeroModel superHero) {
         return superHeroApi.createOrUpdate(superHero);
     }
+
+    @RequestMapping(value = "superhero", method = RequestMethod.PUT)
+    public SuperHeroModel update(@RequestBody SuperHeroModel superHero) {
+        return superHeroApi.createOrUpdate(superHero);
+    }
 }
