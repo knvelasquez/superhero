@@ -2,6 +2,7 @@ package com.jwt.service;
 
 import com.jwt.api.JwtApi;
 import com.jwt.model.JwtModel;
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
@@ -46,14 +47,25 @@ public class Hs256JwtApi implements JwtApi {
                 .compact();
     }
 
+    @Override
+    public JwtModel getAllInfo(String jwt) {
+        Key key = getSignInKey();
+
+        try {
+            Claims claims = Jwts.parserBuilder()
+                    .setSigningKey(key)
+                    .build()
+                    .parseClaimsJws(jwt)
+                    .getBody();
+            return Mapper.fromClaims(claims);
+        } catch (Exception ex) {
+            System.out.println(ex.getMessage());
+        }
+        return null;
+    }
+
     private Key getSignInKey() {
         byte[] keyBytes = Decoders.BASE64.decode(SECRET_KEY);
         return Keys.hmacShaKeyFor(keyBytes);
-    }
-
-    @Override
-    public JwtModel getAllInfo(String jwt) {
-        // TODO implement getAllInfo method
-        return null;
     }
 }
