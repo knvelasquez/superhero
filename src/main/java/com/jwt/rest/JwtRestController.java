@@ -3,6 +3,7 @@ package com.jwt.rest;
 
 import com.jwt.api.JwtApi;
 import com.jwt.model.JwtModel;
+import com.user.api.UserApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,10 +15,12 @@ import java.util.List;
 @RequestMapping("/")
 public class JwtRestController {
     private final JwtApi jwtApi;
+    private final UserApi userApi;
 
     @Autowired
-    public JwtRestController(JwtApi jwtApi) {
+    public JwtRestController(JwtApi jwtApi, UserApi userApi) {
         this.jwtApi = jwtApi;
+        this.userApi = userApi;
     }
 
     @RequestMapping(value = "jwt", method = RequestMethod.POST)
@@ -26,8 +29,7 @@ public class JwtRestController {
             return null;
         }
         final int idUser = jwtModel.getIdUser();
-        final List<String> privileges = new ArrayList<>();
-        //TODO implement privileges
+        final List<String> privileges = userApi.getAllPrivileges(idUser);
         return jwtApi.create(idUser, privileges);
     }
 }
