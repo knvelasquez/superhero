@@ -2,12 +2,9 @@ package com.jwt.rest;
 
 
 import com.jwt.api.JwtApi;
-import com.jwt.model.JwtModel;
 import com.user.api.UserApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -24,7 +21,7 @@ public class JwtRestController {
     }
 
     @RequestMapping(value = "jwt", method = RequestMethod.POST)
-    public String create(@RequestBody JwtModel jwtModel) {
+    public String create(@RequestBody JwtRequestModel jwtModel) {
         if (jwtModel.getIdUser() == 0) {
             return null;
         }
