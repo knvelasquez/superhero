@@ -6,14 +6,14 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import com.jwt.model.JwtModel;
+import static org.mockito.ArgumentMatchers.any;
 
 @SpringBootTest(classes = com.jwt.JwtTest.class)
 public class JwtTest {
@@ -41,5 +41,18 @@ public class JwtTest {
         //Assert
         assertNotNull(jwt);
         assertEquals(jwt, Mock.jwtUser1);
+    }
+
+    @Test
+    @DisplayName("Get all information with provide jwt params should return ok result")
+    public void getAllInformationWithProvideJwtParamsShouldReturnOkResult() {
+        //Arrange
+        when(jwtApi.getAllInfo(any())).thenReturn(Mock.allInfo());
+
+        //Act
+        JwtModel jwtResult = jwtApi.getAllInfo(Mock.jwtUser1);
+
+        //Assert
+        assertNotNull(jwtResult);
     }
 }
