@@ -13,6 +13,18 @@ public class JwtModel {
         this.company = company;
     }
 
+    public int getIdUser() {
+        return idUser;
+    }
+
+    public List<String> getPrivileges() {
+        return privileges;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
     @Override
     public String toString() {
         return "JwtModel{" +
