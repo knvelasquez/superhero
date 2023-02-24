@@ -1,4 +1,4 @@
-package com.jwt.rest;
+package com.jwt.model;
 
 public class JwtRequestModel {
     private int idUser;

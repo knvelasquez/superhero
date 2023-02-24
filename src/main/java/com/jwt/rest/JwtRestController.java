@@ -2,6 +2,7 @@ package com.jwt.rest;
 
 
 import com.jwt.api.JwtApi;
+import com.jwt.model.JwtRequestModel;
 import com.user.api.UserApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

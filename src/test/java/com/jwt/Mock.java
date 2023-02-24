@@ -18,10 +18,11 @@ public class Mock {
 
     static JwtModel allInfo() {
         final List<String> listResult = new ArrayList<>();
+        final String subject = "Subject";
         listResult.add("ROLE_CONSULT");
         listResult.add("ROLE_CREATE");
         listResult.add("ROLE_UPDATE");
         listResult.add("ROLE_DELETE");
-        return new JwtModel(idUser1, listResult, companyName);
+        return new JwtModel(idUser1, listResult, companyName, subject);
     }
 }

@@ -10,6 +10,7 @@ public class Mapper {
         final int idUser = (int) claims.get("UserName");
         final List<String> privileges = (List<String>) claims.get("authorities");
         final String company = (String) claims.get("Company");
-        return new JwtModel(idUser, privileges, company);
+        final String subject = claims.getSubject();
+        return new JwtModel(idUser, privileges, company, subject);
     }
 }
