@@ -1,5 +1,6 @@
 package com.superhero.rest;
 
+import com.exectime.api.ExecTime;
 import com.superhero.api.SuperHeroApi;
 import com.superhero.model.SuperHeroModel;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
@@ -25,18 +26,21 @@ public class SuperHeroRestController {
 
     @RequestMapping(value = "superhero", method = RequestMethod.GET)
     @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_CONSULT')")
+    @ExecTime
     public List<SuperHeroModel> getAll() {
         return superHeroApi.getAll();
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_CONSULT')")
     @RequestMapping(value = "superhero/{id}", method = RequestMethod.GET)
+    @ExecTime
     public SuperHeroModel getByUniqueId(@PathVariable @NonNull Long id) {
         return superHeroApi.getByUniqueId(id);
     }
 
     @PreAuthorize("hasRole('ROLE_ADMIN') OR hasRole('ROLE_CONSULT')")
     @RequestMapping(value = "superhero/contain/{name}", method = RequestMethod.GET)
+    @ExecTime
     public List<SuperHeroModel> getAllByContainingName(@PathVariable @NonNull String name) {
         return superHeroApi.getAllByContainingName(name);
     }
