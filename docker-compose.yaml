@@ -1,0 +1,36 @@
+version: "3.8"
+services:
+  maven_container:
+    container_name: maven_container
+    image: maven:3.8.7-openjdk-18-slim
+    stdin_open: true # docker run -i
+    tty: true        # docker run -t
+    #restart: always
+    working_dir: /workspace
+    ports:
+      - "8080:8080"
+    entrypoint: ["/bin/bash","-c"]
+    command:
+      - |
+        echo "Maven version"
+        mvn -v
+        echo "Cleaning..."
+        mvn clean
+        echo "Executing test"
+        mvn test
+        echo "Executing package"
+        mvn package
+        echo "Executing superhero-2.0.jar"
+        java -jar /workspace/target/superhero-2.0.jar
+    volumes:
+      - .:/workspace/
+
+  jdk_container:
+    container_name: jdk_container
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/workspace/
+    depends_on:
+        - maven_container
