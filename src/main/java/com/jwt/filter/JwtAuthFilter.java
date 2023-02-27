@@ -1,5 +1,8 @@
 package com.jwt.filter;
 
+import com.exceptionhandler.HeaderNotFoundException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jwt.model.JwtModel;
 import com.jwt.service.Hs256JwtApi;
 import jakarta.servlet.FilterChain;
@@ -16,6 +19,8 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 import java.util.stream.Collectors;
+
+import com.exceptionhandler.ExceptionHandler;
 
 @Component
 public class JwtAuthFilter extends OncePerRequestFilter {
@@ -38,18 +43,37 @@ public class JwtAuthFilter extends OncePerRequestFilter {
         final String jwt;
 
         if (authHeader == null || !authHeader.startsWith(BEARER)) {
-            filterChain.doFilter(request, response);
+            if(request.getRequestURI().equals("/jwt")){
+                filterChain.doFilter(request, response);
+                return;
+            }
+            final byte[] json = mapJsonFromException(new HeaderNotFoundException("Authorization header not found in request"), response);
+            response.getOutputStream().write(json);
             return;
         }
-        jwt = authHeader.substring(7);
-        final JwtModel jwtModel = jwtApi.getAllInfo(jwt);
+        try {
+            jwt = authHeader.substring(7);
+            final JwtModel jwtModel = jwtApi.getAllInfo(jwt);
+            if (jwtModel != null && jwtModel.getPrivileges().size() > 0) {
+                UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(jwtModel.getSubject(),
+                        null, jwtModel.getPrivileges().stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
+                SecurityContextHolder.getContext().setAuthentication(auth);
+            }
 
-        if (jwtModel != null && jwtModel.getPrivileges().size() > 0) {
-            UsernamePasswordAuthenticationToken auth = new UsernamePasswordAuthenticationToken(jwtModel.getSubject(),
-                    null, jwtModel.getPrivileges().stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList()));
-            SecurityContextHolder.getContext().setAuthentication(auth);
+            filterChain.doFilter(request, response);
+
+        } catch (Exception ex) {
+            //Send the Serialized Response
+            final byte[] json = mapJsonFromException(ex, response);
+            response.getOutputStream().write(json);
+            return;
         }
+    }
 
-        filterChain.doFilter(request, response);
+    private byte[] mapJsonFromException(Exception ex, HttpServletResponse response) throws JsonProcessingException {
+        final String result = new ObjectMapper().writeValueAsString(
+                new ExceptionHandler().handleException(ex, response).getBody()
+        );
+        return result.getBytes();
     }
 }

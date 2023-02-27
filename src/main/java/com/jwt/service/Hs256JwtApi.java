@@ -60,8 +60,8 @@ public class Hs256JwtApi implements JwtApi {
             return Mapper.fromClaims(claims);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
+            throw ex;
         }
-        return null;
     }
 
     private Key getSignInKey() {
