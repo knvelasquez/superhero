@@ -34,6 +34,9 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
             case "HeaderNotFoundException", "MalformedJwtException", "ExpiredJwtException":
                 statusCode = 400;
                 break;
+            case "AccessDeniedException":
+                statusCode = 403;
+                break;
             default:
                 statusCode = 500;
         }
