@@ -4,6 +4,8 @@ public class SuperHeroModel {
     private Long id;
     private String name;
 
+    public SuperHeroModel() {}
+
     public SuperHeroModel(String name) {
         this.name = name;
     }
@@ -23,9 +25,9 @@ public class SuperHeroModel {
 
     @Override
     public String toString() {
-        return "SuperHero{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                '}';
+        return "{" +
+                ((id != null) ? "\"id\":" + id + "," : "") +
+                "\"name\":\"" + name + "\"" +
+                "}";
     }
 }

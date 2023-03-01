@@ -14,4 +14,10 @@ public class JwtRequestModel {
         return idUser;
     }
 
+    @Override
+    public String toString() {
+        return "{" +
+                "\"idUser\":" + idUser +
+                '}';
+    }
 }
