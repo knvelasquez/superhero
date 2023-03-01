@@ -210,9 +210,31 @@ you can access here
 [http://localhost:8080/swagger-ui](http://localhost:8080/swagger-ui/index.html)
 
 
-## Screenshots
+## Screenshots/Demo
+# Swagger UI
 
-![Swagger Screenshot](https://i.imgur.com/4SSHRts.png)
+you can access here http://localhost:8080/swagger-ui
+
+![Swagger Secure Api](https://i.imgur.com/GsEPDKO.png)
+
+![Swagger padlock](https://i.imgur.com/j3SZy8y.png)
+
+![Swagger jwt](https://i.imgur.com/goTJNZH.png)
+
+![jwt oficial site](https://i.imgur.com/sn2om5W.png)
+
+for more information https://jwt.io/
+
+# prefer to use postman collection
+
+```bash
+
+./SuperHeroCollection.postman_collection.json
+
+```
+![postman collection](https://i.imgur.com/mBI46Tm.png)
+
+![postman collection2](https://i.imgur.com/2vdIsVh.png)
 
 
 ## Author
