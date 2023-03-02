@@ -7,6 +7,8 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.security.Key;
@@ -17,6 +19,7 @@ import java.util.Map;
 
 @Service
 public class Hs256JwtApi implements JwtApi {
+    private static final Logger logger = LogManager.getLogger(Hs256JwtApi.class);
     private static final String SECRET_KEY = "404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970";
     private static final String AUTHORITIES = "authorities";
     private static final String ISSUER = "Super Heroes Fintech, S.A";
@@ -59,7 +62,7 @@ public class Hs256JwtApi implements JwtApi {
                     .getBody();
             return Mapper.fromClaims(claims);
         } catch (Exception ex) {
-            System.out.println(ex.getMessage());
+            logger.error(ex.getMessage());
             throw ex;
         }
     }

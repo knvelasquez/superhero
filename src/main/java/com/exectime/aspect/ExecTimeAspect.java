@@ -1,5 +1,7 @@
 package com.exectime.aspect;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -10,6 +12,8 @@ import org.springframework.stereotype.Component;
 @Aspect
 @Component
 public class ExecTimeAspect {
+
+    private static final Logger logger = LogManager.getLogger(ExecTimeAspect.class);
 
     @Pointcut("@annotation(com.exectime.api.ExecTime)")
     public void handlingTimePointcut() {
@@ -24,12 +28,12 @@ public class ExecTimeAspect {
             String className = entryPoint.getTarget().getClass().getCanonicalName();
 
             final String startOutput = String.format("@ExecTime starting measurement:%s.%s", className, methodName);
-            System.out.println(startOutput);
+            logger.info(startOutput);
             Object proceed = entryPoint.proceed();
 
             final String millisecond = String.valueOf((System.currentTimeMillis() - startTime));
             final String endOutput = String.format("@ExecTime end measurement: %s milliseconds", millisecond);
-            System.out.println(endOutput);
+            logger.info(endOutput);
             return proceed;
         } catch (Throwable throwable) {
             throwable.printStackTrace();

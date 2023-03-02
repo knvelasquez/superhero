@@ -3,6 +3,8 @@ package com.user.cli;
 import com.user.api.UserApi;
 import com.user.repository.PrivilegeRepository;
 import com.user.service.H2UserApi;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,6 +13,7 @@ import java.util.List;
 @Component
 public class CliUserComponent {
 
+    private static final Logger logger = LogManager.getLogger(CliUserComponent.class);
     private final UserApi userApi;
 
     @Autowired
@@ -24,32 +27,32 @@ public class CliUserComponent {
     }
 
     private void getAllPrivileges() {
-        System.out.println("******************************************** Start Get all privileges *************************************************************************");
+        logger.info("******************************************** Start Get all privileges *************************************************************************");
 
         final int idUser = 1;
         final List<String> privileges = userApi.getAllPrivileges(idUser);
-        System.out.println("get all privilege for userId=" + idUser);
-        System.out.println(privileges);
+        logger.info("get all privilege for userId=" + idUser);
+        logger.info(privileges);
 
         final int idUser2 = 2;
         final List<String> privileges2 = userApi.getAllPrivileges(idUser2);
-        System.out.println("get all privilege for userId=" + idUser2);
-        System.out.println(privileges2);
+        logger.info("get all privilege for userId=" + idUser2);
+        logger.info(privileges2);
 
         final int idUser3 = 3;
         final List<String> privileges3 = userApi.getAllPrivileges(idUser3);
-        System.out.println("get all privilege for userId=" + idUser3);
-        System.out.println(privileges3);
+        logger.info("get all privilege for userId=" + idUser3);
+        logger.info(privileges3);
 
         final int idUser4 = 4;
         final List<String> privileges4 = userApi.getAllPrivileges(idUser4);
-        System.out.println("get all privilege for userId=" + idUser4);
-        System.out.println(privileges4);
+        logger.info("get all privilege for userId=" + idUser4);
+        logger.info(privileges4);
 
         final int idUser5 = 5;
         final List<String> privileges5 = userApi.getAllPrivileges(idUser5);
-        System.out.println("get all privilege for userId=" + idUser5);
-        System.out.println(privileges5);
-        System.out.println("******************************************** End Get all privileges ***************************************************************************");
+        logger.info("get all privilege for userId=" + idUser5);
+        logger.info(privileges5);
+        logger.info("******************************************** End Get all privileges ***************************************************************************");
     }
 }
