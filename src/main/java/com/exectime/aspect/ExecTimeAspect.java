@@ -22,9 +22,14 @@ public class ExecTimeAspect {
             MethodSignature sign = (MethodSignature) entryPoint.getSignature();
             String methodName = sign.getMethod().getName();
             String className = entryPoint.getTarget().getClass().getCanonicalName();
-            System.out.println("@ExecTime starting measurement:".concat(className.concat(".").concat(methodName)));
+
+            final String startOutput = String.format("@ExecTime starting measurement:%s.%s", className, methodName);
+            System.out.println(startOutput);
             Object proceed = entryPoint.proceed();
-            System.out.println("@ExecTime end measurement: ".concat(String.valueOf((System.currentTimeMillis() - startTime))).concat(" milliseconds"));
+
+            final String millisecond = String.valueOf((System.currentTimeMillis() - startTime));
+            final String endOutput = String.format("@ExecTime end measurement: %s milliseconds", millisecond);
+            System.out.println(endOutput);
             return proceed;
         } catch (Throwable throwable) {
             throwable.printStackTrace();

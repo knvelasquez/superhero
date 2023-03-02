@@ -41,8 +41,9 @@ public class SuperHeroRestControllerMockMvc {
     String getByUniqueId(String json, int idSuperHero) throws Exception {
         //Arrange
         final String id = String.valueOf(idSuperHero);
-        final String url = "/superhero/".concat(id);
-        httpMock = MockMvcRequestBuilders.get(url);
+        final StringBuilder url = new StringBuilder("/superhero/");
+        url.append(id);
+        httpMock = MockMvcRequestBuilders.get(url.toString());
 
         //Act
         final String response = performRequest(json);
@@ -55,8 +56,9 @@ public class SuperHeroRestControllerMockMvc {
 
     String getByContainName(String json, String name) throws Exception {
         //Arrange
-        final String url = "/superhero/contain/".concat(name);
-        httpMock = MockMvcRequestBuilders.get(url);
+        final StringBuilder url = new StringBuilder("/superhero/contain/");
+        url.append(name);
+        httpMock = MockMvcRequestBuilders.get(url.toString());
 
         //Act
         final String response = performRequest(json);
@@ -99,8 +101,9 @@ public class SuperHeroRestControllerMockMvc {
 
     String delete(String json, Long idUser) throws Exception {
         //Arrange
-        final String url = "/superhero/".concat(String.valueOf(idUser));
-        httpMock = MockMvcRequestBuilders.delete(url);
+        final StringBuilder url = new StringBuilder("/superhero/");
+        url.append(String.valueOf(idUser));
+        httpMock = MockMvcRequestBuilders.delete(url.toString());
 
         //Act
         final String response = performRequest(json);
@@ -113,7 +116,9 @@ public class SuperHeroRestControllerMockMvc {
 
     private String performRequest(String json) throws Exception {
         httpMock.contentType("application/json").accept("*/*");
-        httpMock.header("Authorization", "Bearer ".concat(json));
+        final StringBuilder authorization = new StringBuilder("Bearer ");
+        authorization.append(json);
+        httpMock.header("Authorization", authorization.toString());
         return mvc
                 .perform(httpMock)
                 .andReturn()
