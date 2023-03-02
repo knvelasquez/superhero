@@ -37,6 +37,12 @@ public class ExceptionHandler extends ResponseEntityExceptionHandler {
             case "AccessDeniedException":
                 statusCode = 403;
                 break;
+            case "SuperHeroNotFoundIdException":
+                statusCode = 404;
+                break;
+            case "SuperHeroNotFoundNameException":
+                statusCode = 406;
+                break;
             default:
                 statusCode = 500;
         }
