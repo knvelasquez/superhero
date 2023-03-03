@@ -27,13 +27,20 @@ public class ExecTimeAspect {
             String methodName = sign.getMethod().getName();
             String className = entryPoint.getTarget().getClass().getCanonicalName();
 
-            final String startOutput = String.format("@ExecTime starting measurement:%s.%s", className, methodName);
-            logger.info(startOutput);
+            final StringBuilder startOutput = new StringBuilder("@ExecTime starting measurement: ")
+                    .append(className)
+                    .append(".")
+                    .append(methodName);
+
+            logger.info(startOutput.toString());
             Object proceed = entryPoint.proceed();
 
             final String millisecond = String.valueOf((System.currentTimeMillis() - startTime));
-            final String endOutput = String.format("@ExecTime end measurement: %s milliseconds", millisecond);
-            logger.info(endOutput);
+            final StringBuilder endOutput = new StringBuilder("@ExecTime end measurement: ")
+                    .append(millisecond)
+                    .append("milliseconds");
+
+            logger.info(endOutput.toString());
             return proceed;
         } catch (Throwable throwable) {
             throwable.printStackTrace();

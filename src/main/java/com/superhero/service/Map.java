@@ -2,9 +2,8 @@ package com.superhero.service;
 
 import com.superhero.entity.SuperHeroEntity;
 import com.superhero.model.SuperHeroModel;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Map {
 
@@ -16,10 +15,9 @@ public class Map {
     }
 
     static List<SuperHeroModel> fromEntity(List<SuperHeroEntity> listEntity) {
-        List<SuperHeroModel> listModel = new ArrayList<>();
-
-        listEntity.forEach((entity)
-                -> listModel.add(fromEntity(entity)));
+        final List<SuperHeroModel> listModel = listEntity.stream()
+                .map(entity -> fromEntity(entity))
+                .collect(Collectors.toList());
 
         return listModel;
     }

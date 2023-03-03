@@ -44,7 +44,9 @@ public class SuperHeroRestController {
         Optional<SuperHeroModel> checkNull = Optional.ofNullable(superHero);
 
         if (!checkNull.isPresent()) {
-            StringBuilder msg = new StringBuilder(String.format("SuperHero with id: %s, not exist", id));
+            StringBuilder msg = new StringBuilder("SuperHero with id: ")
+                    .append(id)
+                    .append(", not exist");
             logger.error(msg.toString());
             throw new SuperHeroNotFoundIdException(msg.toString());
         }
@@ -64,7 +66,7 @@ public class SuperHeroRestController {
     public SuperHeroModel create(@RequestBody SuperHeroModel superHero) {
         Optional<String> checkNull = Optional.ofNullable(superHero.getName());
         if (!checkNull.isPresent()) {
-            StringBuilder msg = new StringBuilder(String.format("The name of the Super Hero cannot be null"));
+            StringBuilder msg = new StringBuilder("The name of the Super Hero cannot be null");
             logger.error(msg.toString());
             throw new SuperHeroNotFoundNameException(msg.toString());
         }
@@ -78,12 +80,12 @@ public class SuperHeroRestController {
         Optional<String> checkNotNullName = Optional.ofNullable(superHero.getName());
 
         if (!checkNotNullId.isPresent()) {
-            StringBuilder msg = new StringBuilder(String.format("The id of the Super Hero cannot be null"));
+            StringBuilder msg = new StringBuilder("The id of the Super Hero cannot be null");
             logger.error(msg.toString());
             throw new SuperHeroNotFoundIdException(msg.toString());
         }
         if (!checkNotNullName.isPresent()) {
-            StringBuilder msg = new StringBuilder(String.format("The name of the Super Hero cannot be null"));
+            StringBuilder msg = new StringBuilder("The name of the Super Hero cannot be null");
             logger.error(msg.toString());
             throw new SuperHeroNotFoundNameException(msg.toString());
         }
