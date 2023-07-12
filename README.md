@@ -255,4 +255,10 @@ for more information https://jwt.io/
 
 ## Sección 1
 
+## Sección 1
 
+Contenido de la sección 1...
+
+## Sección 2
+
+Contenido de la sección 2...
