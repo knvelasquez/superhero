@@ -246,3 +246,13 @@ for more information https://jwt.io/
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/knvelasquez/)
 
 
+
+# Tabla de contenido
+
+- [Sección 1](#sección-1)
+- [Sección 2](#sección-2)
+- [Enlace a READMEk2.md](Readme2.md)
+
+## Sección 1
+
+
