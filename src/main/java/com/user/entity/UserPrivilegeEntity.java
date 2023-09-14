@@ -11,10 +11,10 @@ public class UserPrivilegeEntity {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @javax.persistence.Column(name = "idUser", nullable = false)
+    @Column(name = "idUser", nullable = false)
     private int idUser;
 
-    @javax.persistence.Column(name = "idPrivilege", nullable = false)
+    @Column(name = "idPrivilege", nullable = false)
     private String idPrivilege;
 
     public UserPrivilegeEntity() {

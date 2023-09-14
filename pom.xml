@@ -38,15 +38,6 @@
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
-            <scope>runtime</scope>
-        </dependency>
-
-        <!-- javax -->
-        <dependency>
-            <groupId>javax.persistence</groupId>
-            <artifactId>persistence-api</artifactId>
-            <version>1.0.2</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- Swagger3 url: https://springdoc.org/v2/-->
@@ -62,7 +53,7 @@
         </dependency>
         <!-- Swagger3 -->
 
-        <!-- jwt -->
+        <!-- jwt-->
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt-api</artifactId>
@@ -93,16 +84,6 @@
           </dependency>
 
         <!-- security -->
-
-        <!-- testing -->
-
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-
-        <!-- testing -->
 
     </dependencies>
 
