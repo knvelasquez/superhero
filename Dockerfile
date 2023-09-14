@@ -1,9 +1,18 @@
-FROM openjdk:17-slim-buster
+FROM maven:3.8.3-openjdk-17-slim
 
+#Author: Kevin Velasquez
 LABEL MAINTAINER="Kevin Velásquez"
 
-WORKDIR /workspace
+#App name
+ARG APP_NAME=superhero
 
-EXPOSE 8080
+#Set working directory
+WORKDIR /${APP_NAME}
 
-#ENTRYPOINT ["java","-jar","/workspace/target/superhero-2.0.jar"]
+#Copy sources from to container
+COPY . /${APP_NAME}
+
+#Build with maven
+RUN mvn clean test package -X
+
+CMD ["java", "-jar", "target/superhero-2.0.jar"] #Run with Spring Boot

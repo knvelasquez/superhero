@@ -3,20 +3,40 @@
 
 API Rest that allow to manage superheroes, principals tools, Spring Boot 3.0, Spring security, java 17, docker, H2 database
 
-## Run Locally
+## Installation
 
-Clone the project
+Clone the repository to your local machine
 
 ```bash
   git clone https://github.com/knvelasquez/superhero.git
 ```
-
-Start the server
+## Navigate to the project directory
 
 ```bash
-    docker compose up --build
+cd superhero/
 ```
 
+## Build the container
+```bash
+    docker compose build
+```
+The container will be initialized on the default port **8080**
+
+## Start the container
+
+```bashd
+    docker compose up
+```
+
+**Note**: **SPRING_BOOT_PORT** variable must be set if you want to set specific port to access
+```bash
+  SPRING_BOOT_PORT=8181 docker compose up
+```
+
+## It can also do everything in a single line
+```bash
+  SPRING_BOOT_PORT=8181 docker compose up --build
+```
 
 ## Running Tests
 
