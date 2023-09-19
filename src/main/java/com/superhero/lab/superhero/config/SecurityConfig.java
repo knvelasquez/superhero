@@ -1,4 +1,4 @@
-package com.superhero.lab.jwt.config;
+package com.superhero.lab.superhero.config;
 
 import com.superhero.lab.jwt.config.filter.JwtBasedAuthenticationFilter;
 import org.springframework.context.annotation.Bean;

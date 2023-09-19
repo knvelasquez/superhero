@@ -1,4 +1,4 @@
-package com.superhero.lab.jwt.config;
+package com.superhero.lab.superhero.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.info.Contact;
