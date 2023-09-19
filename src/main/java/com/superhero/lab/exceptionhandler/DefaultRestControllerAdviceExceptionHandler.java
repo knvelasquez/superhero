@@ -8,13 +8,12 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
-import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
 import java.io.IOException;
 
 
 @RestControllerAdvice
-public class CustomExceptionHandler extends ResponseEntityExceptionHandler {
+public class DefaultRestControllerAdviceExceptionHandler /*extends ResponseEntityExceptionHandler*/ {
     @ExceptionHandler(AuthenticationException.class)
     public ResponseEntity<Object> handleAuthenticationException(HttpServletResponse response) throws IOException {
         return sendResponse(response.getClass().toString(), "No estás autenticado o tu sesión ha expirado.", HttpStatus.UNAUTHORIZED);
