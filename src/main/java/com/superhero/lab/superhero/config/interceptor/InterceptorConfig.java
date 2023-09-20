@@ -12,12 +12,13 @@ import java.util.Arrays;
 @Configuration
 public class InterceptorConfig {
     private static final String AUTHORIZATION_BEARER_TOKEN_INTERCEPTOR = "AuthorizationBearerToken";
+    private static final String JWT_BASED_AUTHENTICATION_HANDLER_INTERCEPTOR = "JwtBasedAuthenticationHandlerInterceptor";
 
     @Bean
     public WebMvcConfigurer webMvcConfig(InterceptorFactory interceptorFactory,
                                          SuperHeroHandlerInterceptor superHeroHandlerInterceptor) throws Exception {
         return interceptorFactory.from(new ArrayList<>(
-                Arrays.asList(AUTHORIZATION_BEARER_TOKEN_INTERCEPTOR, superHeroHandlerInterceptor, "JwtBasedAuthenticationHandlerInterceptor"))
+                Arrays.asList(AUTHORIZATION_BEARER_TOKEN_INTERCEPTOR, superHeroHandlerInterceptor, JWT_BASED_AUTHENTICATION_HANDLER_INTERCEPTOR))
         );
     }
 
