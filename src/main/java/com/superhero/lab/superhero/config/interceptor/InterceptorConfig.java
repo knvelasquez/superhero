@@ -1,8 +1,7 @@
-package com.superhero.lab.jwt.config;
+package com.superhero.lab.superhero.config.interceptor;
 
 import com.filterlibrary.application.WhiteListService;
 import com.filterlibrary.domain.InterceptorFactory;
-import com.superhero.lab.jwt.config.interceptor.SuperHeroHandlerInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -18,7 +17,7 @@ public class InterceptorConfig {
     public WebMvcConfigurer webMvcConfig(InterceptorFactory interceptorFactory,
                                          SuperHeroHandlerInterceptor superHeroHandlerInterceptor) throws Exception {
         return interceptorFactory.from(new ArrayList<>(
-                Arrays.asList(AUTHORIZATION_BEARER_TOKEN_INTERCEPTOR, superHeroHandlerInterceptor))
+                Arrays.asList(AUTHORIZATION_BEARER_TOKEN_INTERCEPTOR, superHeroHandlerInterceptor, "JwtBasedAuthenticationHandlerInterceptor"))
         );
     }
 
@@ -26,8 +25,7 @@ public class InterceptorConfig {
     public Boolean whiteListConfig(WhiteListService whiteListService) {
         whiteListService.update("/jwt", "AuthorizationBearerTokenHandlerInterceptor", false);
         whiteListService.update("/jwt", "SuperHeroHandlerInterceptor", false);
-        whiteListService.update("/superhero", "AuthorizationBearerTokenHandlerInterceptor", false);
-        whiteListService.update("/superhero", "SuperHeroHandlerInterceptor", false);
+        whiteListService.update("/jwt", "JwtBasedAuthenticationHandlerInterceptor", false);
         return true;
     }
 

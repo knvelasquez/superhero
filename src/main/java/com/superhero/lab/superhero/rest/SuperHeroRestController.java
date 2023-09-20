@@ -1,13 +1,12 @@
 package com.superhero.lab.superhero.rest;
 
+import com.jwtlibrary.domain.JwtFactory;
+import com.jwtlibrary.model.SecurityKey;
 import com.superhero.lab.exceptionhandler.SuperHeroNotFoundIdException;
 import com.superhero.lab.exceptionhandler.SuperHeroNotFoundNameException;
 import com.superhero.lab.exectime.api.ExecTime;
-import com.jwtlibrary.adapter.factory.JwtFactory;
-import com.jwtlibrary.domain.JwtDecoder;
-import com.jwtlibrary.model.SecurityKey;
-import com.superhero.lab.superhero.model.SuperHeroModel;
 import com.superhero.lab.superhero.api.SuperHeroApi;
+import com.superhero.lab.superhero.model.SuperHeroModel;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -25,11 +24,12 @@ import java.util.Optional;
 @SecurityRequirement(name = "bearerToken")
 public class SuperHeroRestController {
     private static final Logger logger = LogManager.getLogger(SuperHeroRestController.class);
-    private static final JwtDecoder jwtDecoder = JwtFactory.getDecoder();
+    private final JwtFactory jwtFactory;
     private final SuperHeroApi superHeroApi;
 
     @Autowired
-    public SuperHeroRestController(SuperHeroApi superHeroApi) {
+    public SuperHeroRestController(JwtFactory jwtFactory, SuperHeroApi superHeroApi) {
+        this.jwtFactory = jwtFactory;
         this.superHeroApi = superHeroApi;
     }
 
@@ -68,7 +68,7 @@ public class SuperHeroRestController {
     @RequestMapping(value = "superhero", method = RequestMethod.POST)
     public SuperHeroModel create(@RequestBody SuperHeroModel superHero,
                                  @RequestHeader(value = "Authorization") String jwt) {
-        SecurityKey key = jwtDecoder.decode(jwt);
+        SecurityKey key = jwtFactory.getDecoder().decode(jwt);
         Optional<String> checkNull = Optional.ofNullable(superHero.getName());
         if (!checkNull.isPresent()) {
             StringBuilder msg = new StringBuilder("The name of the Super Hero cannot be null");

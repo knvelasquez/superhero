@@ -1,7 +1,6 @@
 package com.superhero.lab.jwt.adapter.presentation;
 
-import com.jwtlibrary.adapter.factory.JwtFactory;
-import com.jwtlibrary.domain.JwtEncoder;
+import com.jwtlibrary.domain.JwtFactory;
 import com.superhero.lab.jwt.model.JwtRequestModel;
 import com.superhero.lab.user.api.UserApi;
 import jakarta.validation.Valid;
@@ -14,14 +13,15 @@ import java.util.List;
 @CrossOrigin
 @RequestMapping("/")
 public class JwtRestController {
-    private final JwtEncoder jwtEncoder = JwtFactory.getEncoder();
+    private final JwtFactory jwtFactory;
     private static final String ISSUER = "SuperHero Issuer, S.A";
     private static final String SUBJECT = "Subject Information";
     private static final String COMPANY = "SuperHero Fintech Company, S.A";
     private final UserApi userApi;
 
     @Autowired
-    public JwtRestController(UserApi userApi) {
+    public JwtRestController(JwtFactory jwtFactory, UserApi userApi) {
+        this.jwtFactory = jwtFactory;
         this.userApi = userApi;
     }
 
@@ -29,6 +29,6 @@ public class JwtRestController {
     public String create(@Valid @RequestBody JwtRequestModel jwtModel) {
         final int idUser = jwtModel.getIdUser();
         final List<String> privileges = userApi.getAllPrivileges(idUser);
-        return jwtEncoder.encode(ISSUER, SUBJECT, COMPANY, String.valueOf(idUser), privileges);
+        return jwtFactory.getEncoder().encode(ISSUER, SUBJECT, COMPANY, String.valueOf(idUser), privileges);
     }
 }

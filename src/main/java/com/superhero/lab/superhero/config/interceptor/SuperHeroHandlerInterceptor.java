@@ -1,4 +1,4 @@
-package com.superhero.lab.jwt.config.interceptor;
+package com.superhero.lab.superhero.config.interceptor;
 
 import com.filterlibrary.application.WhiteListService;
 import com.superhero.lab.exceptionhandler.SuperHeroHeaderNotFoundException;

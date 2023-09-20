@@ -19,7 +19,7 @@ public class DefaultControllerAdviceExceptionHandler {
     private static final Logger logger = LogManager.getLogger(CliUserComponent.class);
 
     @ExceptionHandler(SuperHeroHeaderNotFoundException.class)
-    public ResponseEntity<Object> handleSuperHeroHeaderNotFoundExceptionException(SuperHeroHeaderNotFoundException ex) {
+    public ResponseEntity<Object> handleSuperHeroHeaderNotFoundException(SuperHeroHeaderNotFoundException ex) {
         logger.error(ex.getMessage());
         return sendResponse(ex.getClass().toString(), ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
