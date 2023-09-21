@@ -1,4 +1,4 @@
-package com.superhero.lab.jwt.config;
+package com.superhero.lab.exceptionhandler;
 
 import com.filterlibrary.model.ErrorResponse;
 import org.springframework.http.HttpStatus;

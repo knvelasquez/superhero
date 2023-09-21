@@ -2,7 +2,6 @@ package com.superhero.lab.exceptionhandler;
 
 import com.filterlibrary.exception.JwtBasedAuthenticationException;
 import com.filterlibrary.model.ErrorResponse;
-import com.superhero.lab.user.cli.CliUserComponent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 @ControllerAdvice
 public class DefaultControllerAdviceExceptionHandler {
-    private static final Logger logger = LogManager.getLogger(CliUserComponent.class);
+    private static final Logger logger = LogManager.getLogger(DefaultControllerAdviceExceptionHandler.class);
 
     @ExceptionHandler(SuperHeroHeaderNotFoundException.class)
     public ResponseEntity<Object> handleSuperHeroHeaderNotFoundException(SuperHeroHeaderNotFoundException ex) {

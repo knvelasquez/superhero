@@ -1,4 +1,4 @@
-package com.superhero.lab.jwt.model;
+package com.superhero.lab.superhero.model;
 
 public class ErrorResponse {
     private final String cause;
