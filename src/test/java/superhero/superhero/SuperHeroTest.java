@@ -1,7 +1,7 @@
 package superhero.superhero;
 
-import com.superhero.lab.superhero.api.SuperHeroApi;
-import com.superhero.lab.superhero.model.SuperHeroModel;
+import com.superhero.lab.domain.SuperHeroApi;
+import com.superhero.lab.model.SuperHeroModel;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

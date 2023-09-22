@@ -1,7 +1,8 @@
-package com.superhero.lab.exceptionhandler;
+package com.superhero.lab.config;
 
 import com.filterlibrary.exception.JwtBasedAuthenticationException;
 import com.filterlibrary.model.ErrorResponse;
+import com.superhero.lab.config.exception.SuperHeroHeaderNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;

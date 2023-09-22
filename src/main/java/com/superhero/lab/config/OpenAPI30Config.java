@@ -1,4 +1,4 @@
-package com.superhero.lab.superhero.config;
+package com.superhero.lab.config;
 
 import io.swagger.v3.oas.annotations.OpenAPIDefinition;
 import io.swagger.v3.oas.annotations.enums.SecuritySchemeType;

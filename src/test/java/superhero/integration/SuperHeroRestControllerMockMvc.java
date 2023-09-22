@@ -1,6 +1,6 @@
 package superhero.integration;
 
-import com.superhero.lab.superhero.model.SuperHeroModel;
+import com.superhero.lab.model.SuperHeroModel;
 import org.springframework.security.web.FilterChainProxy;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;

@@ -1,4 +1,4 @@
-package com.superhero.lab.superhero.entity;
+package com.superhero.lab.entity;
 
 import jakarta.persistence.*;
 

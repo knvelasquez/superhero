@@ -1,7 +1,7 @@
-package com.superhero.lab.superhero.service;
+package com.superhero.lab.application;
 
-import com.superhero.lab.superhero.entity.SuperHeroEntity;
-import com.superhero.lab.superhero.model.SuperHeroModel;
+import com.superhero.lab.entity.SuperHeroEntity;
+import com.superhero.lab.model.SuperHeroModel;
 
 import java.util.List;
 import java.util.stream.Collectors;

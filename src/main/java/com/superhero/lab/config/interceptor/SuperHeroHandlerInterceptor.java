@@ -1,7 +1,7 @@
-package com.superhero.lab.superhero.config.interceptor;
+package com.superhero.lab.config.interceptor;
 
 import com.filterlibrary.application.WhiteListService;
-import com.superhero.lab.exceptionhandler.SuperHeroHeaderNotFoundException;
+import com.superhero.lab.config.exception.SuperHeroHeaderNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Component;

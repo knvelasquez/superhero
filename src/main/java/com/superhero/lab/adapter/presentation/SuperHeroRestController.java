@@ -1,10 +1,10 @@
-package com.superhero.lab.superhero.rest;
+package com.superhero.lab.adapter.presentation;
 
 import com.jwtlibrary.domain.JwtFactory;
-import com.superhero.lab.exceptionhandler.SuperHeroNotFoundException;
+import com.superhero.lab.config.exception.SuperHeroNotFoundException;
 import com.superhero.lab.exectime.api.ExecTime;
-import com.superhero.lab.superhero.api.SuperHeroApi;
-import com.superhero.lab.superhero.model.SuperHeroModel;
+import com.superhero.lab.domain.SuperHeroApi;
+import com.superhero.lab.model.SuperHeroModel;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -37,7 +37,7 @@ public class SuperHeroRestController {
 
     @GetMapping(value = "/health")
     public ResponseEntity<Map<String, String>> healthCheck(
-            @RequestHeader(value = "Authorization") String authorization
+            //@RequestHeader(value = "Authorization") String authorization
     ) {
         Map<String, String> response = new HashMap<>();
         response.put("version", "v3.0");

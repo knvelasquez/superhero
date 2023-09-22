@@ -1,9 +1,8 @@
-package com.superhero.lab.superhero.cli;
+package com.superhero.lab.application;
 
-import com.superhero.lab.superhero.model.SuperHeroModel;
-import com.superhero.lab.superhero.api.SuperHeroApi;
-import com.superhero.lab.superhero.repository.SuperHeroRepository;
-import com.superhero.lab.superhero.service.H2SuperHeroApi;
+import com.superhero.lab.model.SuperHeroModel;
+import com.superhero.lab.domain.SuperHeroApi;
+import com.superhero.lab.adapter.repository.SuperHeroRepository;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;

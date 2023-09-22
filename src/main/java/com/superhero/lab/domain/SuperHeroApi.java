@@ -1,6 +1,6 @@
-package com.superhero.lab.superhero.api;
+package com.superhero.lab.domain;
 
-import com.superhero.lab.superhero.model.SuperHeroModel;
+import com.superhero.lab.model.SuperHeroModel;
 
 import java.util.List;
 

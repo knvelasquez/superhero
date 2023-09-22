@@ -1,6 +1,6 @@
 package superhero.superhero;
 
-import com.superhero.lab.superhero.model.SuperHeroModel;
+import com.superhero.lab.model.SuperHeroModel;
 
 import java.util.ArrayList;
 import java.util.List;

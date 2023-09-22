@@ -1,4 +1,4 @@
-package com.superhero.lab.exceptionhandler;
+package com.superhero.lab.config.exception;
 
 public class SuperHeroNotFoundException extends Exception {
     public SuperHeroNotFoundException(String message) {

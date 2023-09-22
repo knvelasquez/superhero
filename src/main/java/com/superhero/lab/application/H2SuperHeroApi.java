@@ -1,8 +1,8 @@
-package com.superhero.lab.superhero.service;
+package com.superhero.lab.application;
 
-import com.superhero.lab.superhero.model.SuperHeroModel;
-import com.superhero.lab.superhero.repository.SuperHeroRepository;
-import com.superhero.lab.superhero.api.SuperHeroApi;
+import com.superhero.lab.model.SuperHeroModel;
+import com.superhero.lab.adapter.repository.SuperHeroRepository;
+import com.superhero.lab.domain.SuperHeroApi;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

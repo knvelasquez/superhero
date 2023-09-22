@@ -1,4 +1,4 @@
-package com.superhero.lab.superhero.model;
+package com.superhero.lab.model;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotEmpty;

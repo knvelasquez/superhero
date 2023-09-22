@@ -1,6 +1,7 @@
-package com.superhero.lab.exceptionhandler;
+package com.superhero.lab.config;
 
 import com.filterlibrary.model.ErrorResponse;
+import com.superhero.lab.config.exception.SuperHeroNotFoundException;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

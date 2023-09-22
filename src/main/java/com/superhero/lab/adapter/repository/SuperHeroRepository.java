@@ -1,6 +1,6 @@
-package com.superhero.lab.superhero.repository;
+package com.superhero.lab.adapter.repository;
 
-import com.superhero.lab.superhero.entity.SuperHeroEntity;
+import com.superhero.lab.entity.SuperHeroEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

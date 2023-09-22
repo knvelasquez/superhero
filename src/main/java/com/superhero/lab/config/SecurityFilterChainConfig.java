@@ -1,8 +1,8 @@
-package com.superhero.lab.superhero.config;
+package com.superhero.lab.config;
 
 import com.filterlibrary.application.WhiteListService;
 import com.filterlibrary.domain.InterceptorFactory;
-import com.superhero.lab.superhero.config.interceptor.SuperHeroHandlerInterceptor;
+import com.superhero.lab.config.interceptor.SuperHeroHandlerInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
