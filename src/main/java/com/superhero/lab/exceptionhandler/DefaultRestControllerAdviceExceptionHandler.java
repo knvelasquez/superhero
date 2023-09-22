@@ -24,8 +24,8 @@ public class DefaultRestControllerAdviceExceptionHandler {
         return sendResponse(response.getClass().toString(), "No tienes los privilegios necesarios para acceder a este recurso.", HttpStatus.FORBIDDEN);
     }
 
-    @ExceptionHandler(SuperHeroNotFoundIdException.class)
-    public ResponseEntity<ErrorResponse> handleSuperHeroNotFoundIdException(SuperHeroNotFoundIdException ex) {
+    @ExceptionHandler(SuperHeroNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleSuperHeroNotFoundException(SuperHeroNotFoundException ex) {
         return sendResponse(ex.getClass().toString(), ex.getMessage(), HttpStatus.NOT_FOUND);
     }
 

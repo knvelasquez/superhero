@@ -1,7 +1,7 @@
 package com.superhero.lab.superhero.rest;
 
 import com.jwtlibrary.domain.JwtFactory;
-import com.superhero.lab.exceptionhandler.SuperHeroNotFoundIdException;
+import com.superhero.lab.exceptionhandler.SuperHeroNotFoundException;
 import com.superhero.lab.exectime.api.ExecTime;
 import com.superhero.lab.superhero.api.SuperHeroApi;
 import com.superhero.lab.superhero.model.SuperHeroModel;
@@ -37,7 +37,7 @@ public class SuperHeroRestController {
 
     @GetMapping(value = "/health")
     public ResponseEntity<Map<String, String>> healthCheck(
-            //@RequestHeader(value = "Authorization") String authorization
+            @RequestHeader(value = "Authorization") String authorization
     ) {
         Map<String, String> response = new HashMap<>();
         response.put("version", "v3.0");
@@ -60,16 +60,12 @@ public class SuperHeroRestController {
     @RequestMapping(value = "superhero/{id}", method = RequestMethod.GET)
     @Operation(summary = "get a superhero info by id")
     @Parameter(name = "SUPERHERO", description = "please indicate any value", in = ParameterIn.HEADER)
-    public SuperHeroModel getByUniqueId(@PathVariable @NonNull Long id) throws SuperHeroNotFoundIdException {
+    public SuperHeroModel getByUniqueId(@PathVariable @NonNull Long id) throws SuperHeroNotFoundException {
         final SuperHeroModel superHero = superHeroApi.getByUniqueId(id);
         Optional<SuperHeroModel> checkNull = Optional.ofNullable(superHero);
 
         if (!checkNull.isPresent()) {
-            StringBuilder msg = new StringBuilder("SuperHero with id: ")
-                    .append(id)
-                    .append(", not exist");
-            logger.error(msg.toString());
-            throw new SuperHeroNotFoundIdException(msg.toString());
+            throw new SuperHeroNotFoundException(String.valueOf(id));
         }
 
         return superHero;
@@ -97,7 +93,7 @@ public class SuperHeroRestController {
     @RequestMapping(value = "superhero", method = RequestMethod.PUT)
     @Operation(summary = "update a superhero info")
     @Parameter(name = "SUPERHERO", description = "please indicate any value", in = ParameterIn.HEADER)
-    public SuperHeroModel update(@Valid @RequestBody SuperHeroModel superHero) throws SuperHeroNotFoundIdException {
+    public SuperHeroModel update(@Valid @RequestBody SuperHeroModel superHero) {
         return superHeroApi.createOrUpdate(superHero);
     }
 
