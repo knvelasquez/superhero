@@ -35,8 +35,8 @@ public class SecurityFilterChainConfig {
         return http.csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers(
-                                mvc.pattern("/jwt/health"),
-                                mvc.pattern("/superhero"),
+                                mvc.pattern("/health"),
+                                mvc.pattern("/superhero/**"),
                                 mvc.pattern("/h2-console/**"),
                                 mvc.pattern("/api/auth/**"),
                                 mvc.pattern("/v3/api-docs.yaml"),
@@ -60,6 +60,10 @@ public class SecurityFilterChainConfig {
 
     @Bean
     public Boolean whiteListConfig(WhiteListService whiteListService) {
+
+        whiteListService.update("/health", "AuthorizationBearerTokenHandlerInterceptor", false);
+        whiteListService.update("/health", SUPER_HERO_HANDLER_INTERCEPTOR, false);
+        whiteListService.update("/health", JWT_BASED_AUTHENTICATION_HANDLER_INTERCEPTOR, false);
 
         whiteListService.update("/swagger-ui/index.html", "AuthorizationBearerTokenHandlerInterceptor", false);
         whiteListService.update("/swagger-ui/index.html", SUPER_HERO_HANDLER_INTERCEPTOR, false);
