@@ -2,6 +2,7 @@ version: "3.9"
 services:
   superhero:
     container_name: superhero
+    image: knvelasquez/superhero:v2.0
     environment:
       # Sets default value 8080 if SPRING_BOOT_PORT is not defined
       - SPRING_BOOT_PORT=${SPRING_BOOT_PORT:-8080}
