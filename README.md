@@ -60,7 +60,7 @@ cd superhero/
 ## Resolve internal dependencies
 We need to incorporate this **ApiLibrarys**
 
-- Clone and confiure this:
+- Clone and configure this:
   - **[FilterLibrary v1.0.0](https://github.com/knvelasquez/FilterLibrary)**
   - **[JwtLibrary v1.0.0](https://github.com/knvelasquez/JwtLibrary)**
   - Compile and install them in the local maven repository

@@ -20,6 +20,7 @@ public class ExecTimeAspect {
 
     @Around("handlingTimePointcut()")
     public Object handlingTimeAround(ProceedingJoinPoint entryPoint) {
+        final StringBuilder endOutput = new StringBuilder();
         try {
             long startTime = System.currentTimeMillis();
             MethodSignature sign = (MethodSignature) entryPoint.getSignature();
@@ -35,14 +36,14 @@ public class ExecTimeAspect {
             Object proceed = entryPoint.proceed();
 
             final String millisecond = String.valueOf((System.currentTimeMillis() - startTime));
-            final StringBuilder endOutput = new StringBuilder("@ExecTime end measurement: ")
+            endOutput.append("@ExecTime end measurement: ")
                     .append(millisecond)
                     .append("milliseconds");
-
-            logger.info(endOutput.toString());
             return proceed;
         } catch (Throwable throwable) {
             throwable.printStackTrace();
+        } finally {
+            logger.info(endOutput.toString());
         }
         return null;
     }

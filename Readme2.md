@@ -5,11 +5,11 @@ Un breve resumen de como analicé y diseñe la solución del microservicio de ge
 # Tabla de contenido
 - [Volver al inicio](README.md)
 - [Introducción](#introducción)
-- [Arquitectura general](#arquitectuta-general)
+- [Arquitectura general](#arquitectura-general)
 - [Dependencias](#dependencias)
 - [Escalabilidad](#escalabilidad)
-- [Arquitectura Completa](#aquitectura-completa)
-- [¿Dónde obtengo un jwt válido?](#¿donde-obtengo-un-jwt-valido?)
+- [Arquitectura completa](#aquitectura-completa)
+- [¿Donde obtengo un jwt valido?](#donde-obtengo-un-jwt-valido)
 
 
 ## Introducción
@@ -20,7 +20,7 @@ La gran ventaja es que pueden ser implementados y escalados de forma independien
 el proceso de despliegue continuo (CI/CD).
 
 
-## Arquitectura General 
+## Arquitectura General
 Para garantizar la seguridad en el microservicio(**superhero**), he incorporado **Spring Security** en el contexto global. Esta adición es fundamental 
 para proteger tanto las rutas como los recursos del microservicio, creando así una sólida capa de seguridad. 
 
